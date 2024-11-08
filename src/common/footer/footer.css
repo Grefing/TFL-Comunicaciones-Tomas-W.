@@ -1,0 +1,32 @@
+.footerContainer{
+    display: flex;
+    bottom: 0;
+    height: 10vh;
+    width: 100%;
+}
+
+.nameFooter{
+    font-size: 20px;
+}
+
+.logo{
+    font-size: 40px;
+    color: var(--primary-color);
+    margin: 0 10px;
+}
+
+
+.fcLogo:hover{
+    color: #3b5998;
+    cursor: pointer;
+}
+
+.twLogo:hover{
+    color: #00acee;
+    cursor: pointer;
+}
+
+.ghLogo:hover{
+    color: #171515;
+    cursor: pointer;
+}

@@ -1,0 +1,31 @@
+.menuContainer{
+    width: 100%;
+}
+
+.logoMenu{
+    width: 12vh;
+}
+
+.linkContainer{
+    background-color: var(--primary-color);
+    transition: 200ms ease-in;
+    border-radius: 15px;
+    padding: 1vh;
+}
+
+.linkContainer:hover{
+    transform: scale(1.10, 1.10);
+    background-color: transparent;
+}
+
+.linkCalculator{
+    padding: 2%;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.linkCalculator:hover{
+    color: var(--primary-color);
+}
+

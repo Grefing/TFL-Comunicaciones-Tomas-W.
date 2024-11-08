@@ -1,0 +1,7 @@
+.btnCalculate{
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    transition: 100ms ease-in;
+    border-radius: 5px;
+}

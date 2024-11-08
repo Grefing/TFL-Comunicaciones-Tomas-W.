@@ -1,0 +1,15 @@
+.tableContainer {
+  max-height: 300px; 
+  overflow-y: visible; 
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+
+.table-striped{
+    margin-bottom: 0;
+}
+
+.table-striped thead th {
+  position: sticky;
+  top: 0;
+}

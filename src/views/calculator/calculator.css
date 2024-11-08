@@ -1,0 +1,29 @@
+.levelInputContainer{
+    width: 40%;
+}
+
+.btnCadena{
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 100ms ease-in;
+}
+
+.btnCadena:hover{
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.input-error {
+    border: 1px solid red;
+  }
+
+.constellation{
+ border-radius: 10px;
+}
+
+.constellation:hover{
+    cursor: pointer;
+}
