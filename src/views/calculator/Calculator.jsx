@@ -18,22 +18,24 @@ const Calculator = () => {
   const [bits, setBits] = useState(0);
   const [symbolPhases, setSymbolPhases] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  
 
   const onSubmit = (data) => {
-    const cadenaLength = data.cadena.length;
-    const calculatedBits = Math.log2(cadenaLength);
+    const nivelesModulation = parseInt(data.modulation);
 
-    setLevels(cadenaLength);
-    setBits(calculatedBits);
-
-    const totalCombinations = generateCombinations(calculatedBits);
-    const phases = calculatePhases(totalCombinations);
-    setSymbolPhases(phases);
+    if (!isNaN(nivelesModulation)) {
+      setLevels(nivelesModulation);
+      setBits(Math.log2(nivelesModulation));
+    }
   };
 
-  const isPowerOfTwo = (num) => {
-    return [4, 8, 16, 32, 64].includes(num);
-  };
+  useEffect(() => {
+    if (bits > 0) {
+      const totalCombinations = generateCombinations(bits);
+      const phases = calculatePhases(totalCombinations);
+      setSymbolPhases(phases);
+    }
+  }, [bits]);
 
   const generateCombinations = (n) => {
     const combinations = [];
@@ -90,41 +92,27 @@ const Calculator = () => {
       <div className="levelInputContainer my-5">
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputGroup className="d-flex">
-            <Form.Select aria-label="Default select example">
-              <option>Open this select menu</option>
-              <option value="1">4-QAM</option>
-              <option value="2">8-QAM</option>
-              <option value="3">16-QAM</option>
-              <option value="3">32-QAM</option>
-            </Form.Select>
-            <Form.Control
-              type="text"
-              placeholder="Ingresa la cadena de bits"
-              {...register("cadena", {
-                required: "La cadena es obligatoria",
-                validate: {
-                  binary: (value) =>
-                    /^[01]+$/.test(value) || "Solo se permiten ingresar 1 y 0",
-                  minLength: (value) =>
-                    value.length >= 4 ||
-                    "La cadena debe tener al menos 4 caracteres",
-                  maxLength: (value) =>
-                    value.length <= 64 ||
-                    "La cadena no puede tener más de 64 caracteres",
-                  powerOfTwo: (value) =>
-                    isPowerOfTwo(value.length) ||
-                    "La longitud debe ser una potencia de 2 y un valor estándar (4, 8, 16, 32, 64)",
-                },
+          <Form.Select
+              {...register("modulation", {
+                required: "Por favor, selecciona una modulación válida",
+                validate: (value) => value !== "0" || "Selecciona una modulación",
               })}
-              className={errors.cadena ? "input-error" : ""}
-            />
+              className={errors.modulation ? "input-error" : ""}
+            >
+              <option value="0">Selecciona una modulación</option>
+              <option value="4">4-QAM</option>
+              <option value="8">8-QAM</option>
+              <option value="16">16-QAM</option>
+              <option value="32">32-QAM</option>
+              <option value="64">64-QAM</option>
+            </Form.Select>
             <button type="submit" className="btnCadena">
               Enviar
             </button>
           </InputGroup>
-          {errors.cadena && (
+          {errors.modulation && (
             <Form.Text className="text-danger mx-2">
-              {errors.cadena.message}
+              {errors.modulation.message}
             </Form.Text>
           )}
         </Form>
@@ -139,10 +127,10 @@ const Calculator = () => {
           {symbolPhases.length > 0 && (
             <div>
               <div>
-                <TableCalculator symbolPhases={symbolPhases}></TableCalculator>
+                <TableCalculator symbolPhases={symbolPhases} />
               </div>
 
-              <div className="d-flex justify-content-center mt-4">
+              <div className="d-flex justify-content-center mt-4 flex-wrap">
                 <div>
                   <img
                     src={`/src/assets/modulations/${levels}qam.png`}
@@ -152,8 +140,8 @@ const Calculator = () => {
                   />
                 </div>
 
-                <div>
-                  <DataRateCalculator levels={levels}></DataRateCalculator>
+                <div className="mt-3">
+                  <DataRateCalculator levels={levels} />
                 </div>
               </div>
 
@@ -161,7 +149,7 @@ const Calculator = () => {
                 show={showModal}
                 onHide={() => setShowModal(false)}
                 imgURL={`/src/assets/modulations/${levels}qam.PNG`}
-              ></ModalWindow>
+              />
             </div>
           )}
         </div>

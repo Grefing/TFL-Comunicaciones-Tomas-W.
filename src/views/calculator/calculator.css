@@ -22,8 +22,15 @@
 
 .constellation{
  border-radius: 10px;
+    width: 30vh;
 }
 
 .constellation:hover{
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .constellation{
+        width: 25vh;
+    }
 }
