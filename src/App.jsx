@@ -6,6 +6,7 @@ import Menu from "./common/menu/Menu";
 import Inicio from "./views/inicio/Inicio";
 import Eror404 from "./views/error/Error404";
 import Calculator from "./views/calculator/Calculator"
+import QAMVisualizer from "./views/QAMVisualizer/QAMVisualizer";
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
         <Route exact path="/" element={<Inicio></Inicio>}></Route>
         <Route exact path='*' element={<Eror404></Eror404>}></Route>
         <Route exact path="/calculator" element={<Calculator></Calculator>}></Route>
+        <Route exact path="/qam-visualizer" element={<QAMVisualizer></QAMVisualizer>}></Route>
+        
       </Routes>
       <Footer></Footer>
     </BrowserRouter>
