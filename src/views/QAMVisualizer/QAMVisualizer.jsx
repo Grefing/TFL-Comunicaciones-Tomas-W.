@@ -16,9 +16,8 @@ const QAMVisualizer = () => {
   let [counter, setCounter] = useState(0);
 
   const calculatePhases = (modulationLevel) => {
-    const totalCombinations = Array.from(
-      { length: modulationLevel },
-      (_, i) => i.toString(2).padStart(Math.log2(modulationLevel), "0")
+    const totalCombinations = Array.from({ length: modulationLevel }, (_, i) =>
+      i.toString(2).padStart(Math.log2(modulationLevel), "0")
     );
 
     const phases = [];
@@ -62,8 +61,12 @@ const QAMVisualizer = () => {
   const generateQAMConstellation = (modulationLevel) => {
     const phases = calculatePhases(modulationLevel);
     return phases.map((p) => ({
-      x: p.amplitude * Math.cos((p.phase * Math.PI) / 180),
-      y: p.amplitude * Math.sin((p.phase * Math.PI) / 180),
+      x: parseFloat(
+        (p.amplitude * Math.cos((p.phase * Math.PI) / 180)).toFixed(6)
+      ),
+      y: parseFloat(
+        (p.amplitude * Math.sin((p.phase * Math.PI) / 180)).toFixed(6)
+      ),
       phase: p.phase,
       symbol: p.symbol,
     }));
@@ -91,24 +94,24 @@ const QAMVisualizer = () => {
     }
 
     const frequencyCarrier = 1;
-    const baudRate = 100; 
-    const durationBit = 1 / baudRate; 
+    const baudRate = 100;
+    const durationBit = 1 / baudRate;
     const numSamples = symbols.length * baudRate;
     const time = Array.from({ length: numSamples }, (_, i) => i / baudRate);
 
     const signal = time.map((t, index) => {
-        const symbolIndex = Math.floor(index / baudRate);
-        if (symbolIndex >= symbols.length) return 0;
-        const matchingPoint = constellation.find(
-            (p) => p.symbol === symbols[symbolIndex]
-        );
-        const I = matchingPoint?.x || 0; 
-        const Q = matchingPoint?.y || 0; 
-    
-        return (
-            I * Math.cos(2 * Math.PI * frequencyCarrier * t) - 
-            Q * Math.sin(2 * Math.PI * frequencyCarrier * t)   
-        );
+      const symbolIndex = Math.floor(index / baudRate);
+      if (symbolIndex >= symbols.length) return 0;
+      const matchingPoint = constellation.find(
+        (p) => p.symbol === symbols[symbolIndex]
+      );
+      const I = matchingPoint?.x || 0;
+      const Q = matchingPoint?.y || 0;
+
+      return (
+        I * Math.cos(2 * Math.PI * frequencyCarrier * t) -
+        Q * Math.sin(2 * Math.PI * frequencyCarrier * t)
+      );
     });
 
     symbols.forEach((symbol, idx) => {
@@ -162,9 +165,9 @@ const QAMVisualizer = () => {
     <section className="mainSection d-flex justify-content-center">
       <div className="text-light align-self-center my-3">
         <div className="d-flex justify-content-center">
-          <div className="mx-3 d-flex">
+          <div className="mx-3 d-flex flex-column">
             <label className="align-self-center">Entrada Binaria:</label>
-            <div className="position-relative">
+            <div className="position-relative align-self-center">
               <input
                 className="qamInput with-counter mx-1"
                 type="text"
@@ -175,10 +178,10 @@ const QAMVisualizer = () => {
               <h5 className="counter-inside-input">{counter}</h5>
             </div>
           </div>
-          <div>
+          <div className="d-flex flex-column">
             <label>Nivel de Modulación:</label>
             <select
-              className="mx-2 qamInput"
+              className="mx-2 qamInput with-counter"
               value={modulationLevel}
               onChange={(e) => setModulationLevel(Number(e.target.value))}
             >
@@ -195,8 +198,9 @@ const QAMVisualizer = () => {
             Modular
           </button>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 mx-1 d-flex justify-content-center">
           <Plot
+          className="plot-container"
             data={plotData}
             layout={{
               title: "Onda Modulada QAM",
@@ -208,8 +212,9 @@ const QAMVisualizer = () => {
             }}
           />
         </div>
-        <div className="mt-4 mb-4">
+        <div className="mt-4 mx-1 mb-4 d-flex justify-content-center">
           <Plot
+            className="plot-container"
             data={[
               {
                 x: constellationData.map((p) => p.x),
@@ -219,6 +224,10 @@ const QAMVisualizer = () => {
                 text: constellationData.map((p) => p.symbol),
                 textposition: "top center",
                 marker: { size: 10, color: "red" },
+                hovertext: constellationData.map(
+                  (p) => `Coordenadas: (${p.x.toFixed(2)}, ${p.y.toFixed(2)})<br>Fase: ${p.phase}°`
+                ),
+                hoverinfo: "text",
               },
             ]}
             layout={{

@@ -16,6 +16,7 @@
     border: none;
     padding: 5px;
     border-radius: 5px;
+    font-size: 2vh;
 }
 
 .qamInput.with-counter {
@@ -34,3 +35,21 @@
     pointer-events: none; 
   }
   
+  .plot-container {
+    max-width: 100%;
+
+  }
+  
+  @media (max-width: 768px) {
+    .plot-container {
+      width: 90%;
+      height: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .plot-container {
+      width: 100%;
+      height: 250px;
+    }
+  }
