@@ -5,3 +5,26 @@
 .imgStart:hover{
     cursor: pointer;
 }
+
+.title {
+  color: #ffc107; 
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.text-light {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.i {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.i:hover {
+  transform: scale(1.05);
+}

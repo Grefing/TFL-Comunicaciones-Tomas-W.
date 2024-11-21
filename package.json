@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@cloudinary/react": "^1.13.1",
+    "@cloudinary/url-gen": "^1.21.0",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.6",
     "d3": "^7.9.0",

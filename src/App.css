@@ -19,6 +19,7 @@
     flex-direction: column;
     min-height: 100vh;
     --primary-color: rgb(76, 164, 199);
+    --secondary-color: #ffc107; 
 }
 
 .mainSection{

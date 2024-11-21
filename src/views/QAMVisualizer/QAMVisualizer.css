@@ -36,8 +36,8 @@
   }
   
   .plot-container {
-    max-width: 100%;
-
+    max-width: 100%;  
+    /* border: 1px solid var(--secondary-color); */
   }
   
   @media (max-width: 768px) {
