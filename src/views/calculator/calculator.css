@@ -23,9 +23,11 @@
 .constellation{
  border-radius: 10px;
     width: 30vh;
+    transition: 200ms ease-in;
 }
 
 .constellation:hover{
+    transform: scale(1.05,1.05);
     cursor: pointer;
 }
 
