@@ -90,9 +90,9 @@ const Calculator = () => {
     <section className="mainSection justify-content-center">
       <Form
         onSubmit={handleSubmit(onSubmit)}
-        className="d-flex justify-content-center mt-4"
+        className="d-flex justify-content-center flex-column mt-4"
       >
-        <InputGroup className="w-50">
+        <InputGroup className="w-50 align-self-center">
           <Form.Select
             {...register("modulation", {
               required: "Por favor, selecciona una modulación válida",
@@ -111,11 +111,13 @@ const Calculator = () => {
             Enviar
           </button>
         </InputGroup>
+        <div className="w-50 align-self-center">
         {errors.modulation && (
           <Form.Text className="text-danger mx-2">
             {errors.modulation.message}
           </Form.Text>
         )}
+        </div>
       </Form>
 
       {symbolPhases.length > 0 && (

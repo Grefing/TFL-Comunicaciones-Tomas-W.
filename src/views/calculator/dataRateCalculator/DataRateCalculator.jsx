@@ -27,8 +27,8 @@ const DataRateCalculator = ({ levels }) => {
 
   useEffect(() => {
     setDataRate(null);
-}, [levels])
-  
+  }, [levels]);
+
   return (
     <div className="mx-3">
       <h3 className="titleDataRateCalculator">Calcular Tasa de información:</h3>
@@ -36,10 +36,23 @@ const DataRateCalculator = ({ levels }) => {
         <InputGroup className="my-3">
           <Form.Control
             type="number"
-            placeholder="Tiempo de simbolo en ms"
-            {...register("symbolTemp")}
-          ></Form.Control>
+            placeholder="Tiempo de símbolo en ms"
+            {...register("symbolTemp", {
+              required: "El tiempo de símbolo es requerido.",
+              valueAsNumber: true, 
+              min: {
+                value: 0.01, 
+                message: "El tiempo de símbolo debe ser mayor a 0.",
+              },
+            })}
+            className={errors.symbolTemp ? "input-error" : ""}
+          />
         </InputGroup>
+        {errors.symbolTemp && (
+          <p className="mx-2" style={{ color: "red", fontSize: "0.9rem" }}>
+            {errors.symbolTemp.message}
+          </p>
+        )}
         <div className="my-3 d-flex justify-content-end">
           <button className="btnCalculate">Calcular</button>
         </div>
