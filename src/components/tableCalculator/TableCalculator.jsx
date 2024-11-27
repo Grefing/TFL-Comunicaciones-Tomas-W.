@@ -5,7 +5,7 @@ const TableCalculator = ({ symbolPhases }) => {
   
   return (
     <div className="tableContainer">
-      <Table className="table-striped text-center">
+      <Table className='text-center table-striped' striped bordered responsive>
         <thead>
           <tr>
             <th>Símbolo</th>

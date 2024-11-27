@@ -71,18 +71,30 @@ const QAMVisualizer = () => {
       symbol: p.symbol,
     }));
   };
-
+  
   const modulateQAM = () => {
-    if (!binaryInput || binaryInput.length % Math.log2(modulationLevel) !== 0) {
+    const bitsPerSymbol = Math.log2(modulationLevel); 
+
+    if (binaryInput.length < bitsPerSymbol * 2) {
       Swal.fire({
         icon: "error",
-        title: "La cadena ingresada no es válida",
-        text: "Ingrese una cadena válida",
+        title: "Cadena insuficiente",
+        text: `Debe ingresar al menos ${
+          bitsPerSymbol * 2
+        } bits para visualizar al menos 2 símbolos.`,
       });
       return;
     }
 
-    const bitsPerSymbol = Math.log2(modulationLevel);
+    if (binaryInput.length % bitsPerSymbol !== 0) {
+      Swal.fire({
+        icon: "error",
+        title: "La cadena ingresada no es válida",
+        text: `La cadena debe ser múltiplo de ${bitsPerSymbol} bits para la modulación ${modulationLevel}-QAM.`,
+      });
+      return;
+    }
+
     const constellation = generateQAMConstellation(modulationLevel);
     const symbols = [];
     const annotations = [];
@@ -200,10 +212,10 @@ const QAMVisualizer = () => {
         </div>
         <div className="mt-4 mx-1 d-flex justify-content-center">
           <Plot
-          className="plot-container"
+            className="plot-container"
             data={plotData}
             layout={{
-              title: "Onda Modulada QAM",
+              title: `Onda Modulada ${modulationLevel} QAM`,
               xaxis: { title: "Tiempo (s)" },
               yaxis: { title: "Amplitud" },
               annotations: annotations,
@@ -225,13 +237,16 @@ const QAMVisualizer = () => {
                 textposition: "top center",
                 marker: { size: 10, color: "red" },
                 hovertext: constellationData.map(
-                  (p) => `Coordenadas: (${p.x.toFixed(2)}, ${p.y.toFixed(2)})<br>Fase: ${p.phase}°`
+                  (p) =>
+                    `Coordenadas: (${p.x.toFixed(2)}, ${p.y.toFixed(
+                      2
+                    )})<br>Fase: ${p.phase}°`
                 ),
                 hoverinfo: "text",
               },
             ]}
             layout={{
-              title: "Constelación QAM",
+              title: `Constelación ${modulationLevel} QAM`,
               xaxis: { title: "Eje I" },
               yaxis: { title: "Eje Q" },
               autosize: true,

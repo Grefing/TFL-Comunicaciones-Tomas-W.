@@ -5,3 +5,7 @@
     transition: 100ms ease-in;
     border-radius: 5px;
 }
+
+.titleDataRateCalculator{
+    color: white;
+}

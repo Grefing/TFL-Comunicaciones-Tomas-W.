@@ -80,6 +80,7 @@ const Inicio = () => {
         onHide={() => setShowModal(false)}
         imgURL={"/src/assets/modulationQAM.PNG"}
       />
+
     </section>
   );
 };

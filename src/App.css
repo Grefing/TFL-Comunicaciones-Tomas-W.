@@ -5,13 +5,18 @@
 }
 
 *::-webkit-scrollbar {
-    width: 4px;
+    width: 10px;
     border-radius: 15px;
   }
   
-*::-webkit-scrollbar-thumb {
+.tableContainer::-webkit-scrollbar-thumb {
     background-color: rgb(76, 164, 199);
-    border-radius: 15px; 
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(76, 164, 199);  
   }
 
 #root{
@@ -28,4 +33,7 @@
     background-color: rgb(11, 13, 44);
 }
 
+*{
+  user-select: none;
+}
 

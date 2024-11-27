@@ -31,7 +31,7 @@ const DataRateCalculator = ({ levels }) => {
   
   return (
     <div className="mx-3">
-      <h3 className="text-light">Calcular Tasa de información:</h3>
+      <h3 className="titleDataRateCalculator">Calcular Tasa de información:</h3>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <InputGroup className="my-3">
           <Form.Control

@@ -16,17 +16,22 @@
 }
 
 
-.fcLogo:hover{
-    color: #3b5998;
+.lkLogo:hover{
+    color:  #0e76a8;
     cursor: pointer;
 }
 
-.twLogo:hover{
-    color: #00acee;
+.gmailLogo:hover{
+    color: rgb(199, 47, 47);
     cursor: pointer;
 }
 
 .ghLogo:hover{
-    color: #171515;
+    color: white;
+    cursor: pointer;
+}
+
+.waLogo:hover{
+    color: #25d366;
     cursor: pointer;
 }
