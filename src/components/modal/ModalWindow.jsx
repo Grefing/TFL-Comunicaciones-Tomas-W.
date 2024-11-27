@@ -14,7 +14,7 @@ const ModalWindow = ({ show, onHide, imgURL }) => {
       </Modal.Header>
       <Modal.Body>
         <div className="d-flex justify-content-center">
-          <img src={imgURL} alt="" className="imgModal"/>
+          <img src={imgURL} alt="" className="imgModal img-fluid"/>
         </div>
       </Modal.Body>
       <Modal.Footer>
