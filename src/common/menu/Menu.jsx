@@ -9,7 +9,7 @@ const Menu = () => {
     <div className="bg-dark menuContainer d-flex justify-content-between">
       <div className="titleContainer mx-3 d-flex">
         <Link to={"/"}>
-          <img src="/src/assets/logo.png" alt="Logo" className="logoMenu" />
+          <img src="https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683639/file_1_huyubd.png" alt="Logo" className="logoMenu" />
         </Link>
       </div>
       <div className="d-flex">

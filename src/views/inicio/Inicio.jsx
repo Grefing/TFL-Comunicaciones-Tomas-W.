@@ -66,7 +66,7 @@ const Inicio = () => {
         <div className="row justify-content-center my-4">
           <div className="col-auto">
             <img
-              src="/src/assets/modulationQAM.PNG"
+              src="https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683665/modulationQAM_kfx4dg.png"
               className="i"
               alt="Modulación QAM"
               onClick={() => setShowModal(true)}
@@ -78,7 +78,7 @@ const Inicio = () => {
       <ModalWindow
         show={showModal}
         onHide={() => setShowModal(false)}
-        imgURL={"/src/assets/modulationQAM.PNG"}
+        imgURL={"https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683665/modulationQAM_kfx4dg.png"}
       />
 
     </section>

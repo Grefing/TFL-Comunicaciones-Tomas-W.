@@ -133,7 +133,7 @@ const Calculator = () => {
               <div className="d-flex justify-content-center mt-4 flex-wrap">
                 <div>
                   <img
-                    src={`/src/assets/modulations/${levels}qam.png`}
+                    src={`https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683627/${levels}qam.png`}
                     alt="imgModulation"
                     className="constellation"
                     onClick={() => setShowModal(true)}
@@ -148,7 +148,7 @@ const Calculator = () => {
               <ModalWindow
                 show={showModal}
                 onHide={() => setShowModal(false)}
-                imgURL={`/src/assets/modulations/${levels}qam.PNG`}
+                imgURL={`https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683627/${levels}qam.png`}
               />
             </div>
           )}
