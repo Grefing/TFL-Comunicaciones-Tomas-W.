@@ -3,6 +3,7 @@
   overflow-y: visible; 
   overflow-x: hidden;
   border-radius: 10px;
+  width: 80%;
 }
 
 .table-striped{

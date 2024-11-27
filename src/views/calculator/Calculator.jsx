@@ -18,7 +18,6 @@ const Calculator = () => {
   const [bits, setBits] = useState(0);
   const [symbolPhases, setSymbolPhases] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  
 
   const onSubmit = (data) => {
     const nivelesModulation = parseInt(data.modulation);
@@ -88,72 +87,69 @@ const Calculator = () => {
   };
 
   return (
-    <section className="mainSection d-flex justify-content-center">
-      <div className="levelInputContainer my-5">
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <InputGroup className="d-flex">
+    <section className="mainSection justify-content-center">
+      <Form
+        onSubmit={handleSubmit(onSubmit)}
+        className="d-flex justify-content-center mt-4"
+      >
+        <InputGroup className="w-50">
           <Form.Select
-              {...register("modulation", {
-                required: "Por favor, selecciona una modulación válida",
-                validate: (value) => value !== "0" || "Selecciona una modulación",
-              })}
-              className={errors.modulation ? "input-error" : ""}
-            >
-              <option value="0">Selecciona una modulación</option>
-              <option value="4">4-QAM</option>
-              <option value="8">8-QAM</option>
-              <option value="16">16-QAM</option>
-              <option value="32">32-QAM</option>
-              <option value="64">64-QAM</option>
-            </Form.Select>
-            <button type="submit" className="btnCadena">
-              Enviar
-            </button>
-          </InputGroup>
-          {errors.modulation && (
-            <Form.Text className="text-danger mx-2">
-              {errors.modulation.message}
-            </Form.Text>
-          )}
-        </Form>
-
-        {symbolPhases.length > 0 && (
-          <div className="mt-4 text-light d-flex justify-content-center">
-            <h1>{levels}-QAM</h1>
-          </div>
+            {...register("modulation", {
+              required: "Por favor, selecciona una modulación válida",
+              validate: (value) => value !== "0" || "Selecciona una modulación",
+            })}
+            className={errors.modulation ? "input-error" : ""}
+          >
+            <option value="0">Selecciona una modulación</option>
+            <option value="4">4-QAM</option>
+            <option value="8">8-QAM</option>
+            <option value="16">16-QAM</option>
+            <option value="32">32-QAM</option>
+            <option value="64">64-QAM</option>
+          </Form.Select>
+          <button type="submit" className="btnCadena">
+            Enviar
+          </button>
+        </InputGroup>
+        {errors.modulation && (
+          <Form.Text className="text-danger mx-2">
+            {errors.modulation.message}
+          </Form.Text>
         )}
+      </Form>
 
-        <div>
-          {symbolPhases.length > 0 && (
+      {symbolPhases.length > 0 && (
+        <div className="mt-4 text-light d-flex justify-content-center">
+          <h1>{levels}-QAM</h1>
+        </div>
+      )}
+
+      {symbolPhases.length > 0 && (
+        <div className="d-flex flex-column mb-4">
+          <TableCalculator symbolPhases={symbolPhases} />
+
+          <div className="d-flex justify-content-center mt-4 flex-wrap">
             <div>
-              <div>
-                <TableCalculator symbolPhases={symbolPhases} />
-              </div>
-
-              <div className="d-flex justify-content-center mt-4 flex-wrap">
-                <div>
-                  <img
-                    src={`https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683627/${levels}qam.png`}
-                    alt="imgModulation"
-                    className="constellation"
-                    onClick={() => setShowModal(true)}
-                  />
-                </div>
-
-                <div className="mt-3">
-                  <DataRateCalculator levels={levels} />
-                </div>
-              </div>
-
-              <ModalWindow
-                show={showModal}
-                onHide={() => setShowModal(false)}
-                imgURL={`https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683627/${levels}qam.png`}
+              <img
+                src={`https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683618/${levels}qam.png`}
+                alt="imgModulation"
+                className="constellation"
+                onClick={() => setShowModal(true)}
               />
             </div>
-          )}
+
+            <div className="mt-3">
+              <DataRateCalculator levels={levels} />
+            </div>
+          </div>
+
+          <ModalWindow
+            show={showModal}
+            onHide={() => setShowModal(false)}
+            imgURL={`https://res.cloudinary.com/dwq8jr6pz/image/upload/v1732683618/${levels}qam.png`}
+          />
         </div>
-      </div>
+      )}
     </section>
   );
 };

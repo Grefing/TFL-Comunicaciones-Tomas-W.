@@ -4,8 +4,8 @@ import './tableCalculator.css';
 const TableCalculator = ({ symbolPhases }) => {
   
   return (
-    <div className="tableContainer">
-      <Table className='text-center table-striped' striped bordered responsive>
+    <div className="tableContainer align-self-center mx-4">
+      <Table className='text-center table-striped' striped bordered >
         <thead>
           <tr>
             <th>Símbolo</th>
