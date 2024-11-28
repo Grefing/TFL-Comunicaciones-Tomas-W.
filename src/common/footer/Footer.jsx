@@ -18,7 +18,7 @@ const Footer = () => {
 
       <div className="d-flex justify-content-center">
         <Link
-          to="/public/MANUAL DE USUARIO TFL.pdf"
+          to="/public/manualdeusuario.pdf"
           target="_blank"
           download
           className="d-flex download"
