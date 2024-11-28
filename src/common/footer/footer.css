@@ -35,3 +35,11 @@
     color: #25d366;
     cursor: pointer;
 }
+
+.download{
+    text-decoration: none;
+}
+
+.logoDownload{
+    font-size: 23px;
+}

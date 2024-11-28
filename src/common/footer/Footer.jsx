@@ -1,11 +1,10 @@
 import {
   AiOutlineInstagram,
-  AiOutlineFacebook,
-  AiOutlineTwitter,
   AiOutlineGithub,
   AiOutlineWhatsApp,
   AiOutlineLinkedin,
   AiOutlineMail,
+  AiOutlineDownload,
 } from "react-icons/ai";
 import "./footer.css";
 import { Link } from "react-router-dom";
@@ -15,6 +14,18 @@ const Footer = () => {
     <div className="bg-dark text-light py-4">
       <div className="d-flex justify-content-center mx-5">
         <p className="nameFooter">&copy;TFL Tomas Wajnerman 2024</p>
+      </div>
+
+      <div className="d-flex justify-content-center">
+        <Link
+          to="/public/MANUAL DE USUARIO TFL.pdf"
+          target="_blank"
+          download
+          className="d-flex download"
+        >
+          <p className="align-self-center">Manual de usuario</p>
+          <AiOutlineDownload className="logoDownload"></AiOutlineDownload>
+        </Link>
       </div>
 
       <div className=" mx-5 d-flex justify-content-center">
