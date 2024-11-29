@@ -32,7 +32,7 @@ const Footer = () => {
         <Link target="_blank" to={"https://www.instagram.com/tomi_waj/"}>
           <AiOutlineInstagram className="igLogo logo"></AiOutlineInstagram>
         </Link>
-        <Link target="_blank" to={"https://www.facebook.com/tomas.wajnerman"}>
+        <Link target="_blank" to={"https://www.linkedin.com/in/tomas-wajnerman-617a71213/"}>
           <AiOutlineLinkedin className="lkLogo logo"></AiOutlineLinkedin>
         </Link>
         <Link target="_blank" to={"mailto:wajnermantomas@gmail.com"}>
